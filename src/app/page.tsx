@@ -1,101 +1,133 @@
+"use client";
+import React from "react";
 import Image from "next/image";
+import { ContainerScroll } from "@/components/ui/container-scroll-animation";
+import { TracingBeam } from "@/components/ui/tracing-beam";
+import { BackgroundLines } from "@/components/ui/background-lines";
+import { useScroll, useTransform } from "framer-motion";
+import { GoogleGeminiEffect } from "../components/ui/google-gemini-effect";
+import { Safari } from "@/components/magicui/safari";
 
-export default function Home() {
+export default function HeroScrollDemo() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+    <div className="flex flex-col overflow-hidden max-w-7xl mx-auto">
+      {/* Hero Section */}
+      <ContainerScroll
+        titleComponent={
+          <>
+            <h1 className="text-4xl font-semibold text-white text-center">
+              Enhance Your Browsing Experience with
+              <br />
+              <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none tracking-widest text-blue-500">
+                AUTOLAB
+              </span>
+            </h1>
+          </>
+        }
+      >
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+          src={`/extension.png`}
+          alt="Extension Preview"
+          height={720}
+          width={1400}
+          className="mx-auto rounded-2xl object-cover h-full object-center shadow-lg"
+          draggable={false}
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+      </ContainerScroll>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Features Section */}
+      <TracingBeam className="px-6 py-10">
+        <div className="max-w-2xl mx-auto antialiased relative text-center">
+          <BackgroundLines className="flex items-center justify-center w-full flex-col px-4">
+            <h2 className="bg-clip-text text-transparent bg-gradient-to-b from-neutral-600 to-white text-2xl md:text-4xl lg:text-6xl font-bold tracking-tight">
+              Transform Your Web Experience
+            </h2>
+            <p className="max-w-xl mx-auto text-sm md:text-lg text-neutral-400 mt-4">
+              AUTOLAB makes browsing easier by highlighting links and counting
+              words efficiently. A simple yet powerful tool for users,
+              researchers, and content creators.
+            </p>
+          </BackgroundLines>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+        <div className="relative py-40">
+          <Safari
+            url="magicui.design"
+            className="size-full"
+            videoSrc="/recording.mp4"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+        </div>
+      </TracingBeam>
+
+      {/* Features List */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-6 py-10 max-w-5xl mx-auto text-white">
+        <FeatureCard
+          title="🔗 Highlight Links"
+          description="Automatically mark all links in blue with an underline for easy identification."
+        />
+        <FeatureCard
+          title="🔢 Word Counter"
+          description="Quickly count the total words on the page to enhance readability and analysis."
+        />
+        <FeatureCard
+          title="🚀 Lightweight & Fast"
+          description="Designed for efficiency, AUTOLAB runs seamlessly without slowing down your browsing."
+        />
+      </div>
+
+      {/* Interactive Section */}
+      <GoogleGeminiEffectDemo />
+
+      {/* Footer */}
+      <footer className="mx-auto p-6 text-center text-neutral-300 text-sm">
+        <p>
+          Built with ❤️ by{" "}
+          <a
+            href="https://anytimesoftware.com/"
+            target="_blank"
+            className="text-blue-400 hover:underline"
+          >
+            Anytime Software Inc.
+          </a>
+        </p>
       </footer>
+    </div>
+  );
+}
+
+function FeatureCard({
+  title,
+  description,
+}: {
+  title: string;
+  description: string;
+}) {
+  return (
+    <div className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+      <h3 className="text-xl font-semibold mb-2 text-blue-400">{title}</h3>
+      <p className="text-neutral-300 text-sm">{description}</p>
+    </div>
+  );
+}
+
+function GoogleGeminiEffectDemo() {
+  const ref = React.useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const pathLengths = [0.2, 0.15, 0.1, 0.05, 0].map((start, i) =>
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useTransform(scrollYProgress, [0, 0.8], [start, 1.2])
+  );
+
+  return (
+    <div
+      className="h-[80vh] w-full rounded-md relative pt-40 overflow-clip"
+      ref={ref}
+    >
+      <GoogleGeminiEffect pathLengths={pathLengths} />
     </div>
   );
 }
