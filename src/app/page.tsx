@@ -76,20 +76,6 @@ export default function HeroScrollDemo() {
 
       {/* Interactive Section */}
       <GoogleGeminiEffectDemo />
-
-      {/* Footer */}
-      <footer className="mx-auto p-6 text-center text-neutral-300 text-sm">
-        <p>
-          Built with ❤️ by{" "}
-          <a
-            href="https://anytimesoftware.com/"
-            target="_blank"
-            className="text-blue-400 hover:underline"
-          >
-            Anytime Software Inc.
-          </a>
-        </p>
-      </footer>
     </div>
   );
 }
